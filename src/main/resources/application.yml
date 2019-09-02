@@ -1,0 +1,31 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    username: root
+    password: yang001
+    url: jdbc:mysql://localhost:3306/yang?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  redis:
+      host: localhost
+      lettuce:
+        pool:
+          maxActive: 5
+          maxIdle: 5
+
+
+
+mybatis:
+  mapper-locations: classpath:mapping/*Mapper.xml
+  type-aliases-package: com.yang.demospring.entity
+  configuration:
+    map-underscore-to-camel-case: true
+  type-handlers-package: com.yang.demospring.handler
+
+logging:
+  level:
+    com.yang.demospring.mapper : debug     #打印mybatis执行sql
+
+task:
+  sched: 0 * * * * ?
